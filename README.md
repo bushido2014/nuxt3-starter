@@ -1,3 +1,3 @@
-# nuxt-starter-n9j7tu
+# Nuxt 3 Minimal Starter
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/nuxt-starter-n9j7tu)
+Nuxt 3 Template starter with Supabase and Tailwindcss
