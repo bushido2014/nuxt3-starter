@@ -6,8 +6,8 @@ const client = useSupabaseClient();
 <template>
   <header class="bg-sky-500">
     <div class="container flex items-center justify-between w-full py-6">
-      <nav class="ml-4 text-sm font-medium flex items-center">
-        <a href="/" class="flex items-center hover:opacity-80 px-4">
+      <nav class="ml-3 text-sm font-medium flex items-center">
+        <a href="/" class="flex items-center hover:opacity-80 px-2">
           <span class="text-lg font-extrabold text-white"> Supabase</span>
           <span class="mr-2 text-lg font-extrabold text-green">Nuxt</span>
         </a>
@@ -43,7 +43,7 @@ const client = useSupabaseClient();
           >Projects</NuxtLink
         >
       </nav>
-      <div class="flex items-center">
+      <div class="flex items-center mr-3">
         <NuxtLink
           to="/dashboard"
           v-if="user"
