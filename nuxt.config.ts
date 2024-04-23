@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts', '@nuxtjs/supabase'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts','@nuxtjs/supabase'],
   tailwindcss: {
     cssPath: '~/assets/css/main.css',
     configPath: 'tailwind.config.js',
