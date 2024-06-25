@@ -1,18 +1,19 @@
 export default defineNuxtConfig({
+  css: ['~/assets/css/main.css'],
   modules: [
-    '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
     '@nuxtjs/supabase',
-    "@nuxt/ui"
+    "@nuxt/ui",
+    "@nuxt/icon"
   ],
-  tailwindcss: {
-    cssPath: '~/assets/css/main.css',
-    configPath: 'tailwind.config.js',
-    exposeConfig: false,
-    config: {},
-    injectPosition: 0,
-    viewer: true,
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
   },
+
   googleFonts: {
     prefetch: true,
     preconnect: true,
