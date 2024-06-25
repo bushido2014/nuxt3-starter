@@ -58,6 +58,7 @@ onMounted(() => {
     <div v-if="errorMsg" class="mb-10 p-4 rounded-md bg-light-grey shadow-lg">
       <p class="text-red-500">{{ errorMsg }}</p>
     </div>
+
     <UForm
       @submit.prevent="() => (isSignUp ? signUp() : login())"
       
@@ -84,5 +85,6 @@ onMounted(() => {
       <span v-if="isSignUp"> Have an account? Log in instead </span>
       <span v-else> Create a new account </span>
     </UButton>
+    
   </div>
 </template>
