@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     },
     display: 'swap',
   },
+  app: {
   head: {
     meta: [
       { charset: 'utf-8' },
@@ -35,5 +36,7 @@ export default defineNuxtConfig({
       },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-  },
+  }
+},
+
 });
