@@ -16,5 +16,8 @@
     "nuxt": "^3.12.2",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4"
+  },
+  "dependencies": {
+    "@supabase/gotrue-js": "^2.32.0"
   }
 }
