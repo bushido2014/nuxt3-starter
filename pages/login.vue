@@ -60,7 +60,7 @@ onMounted(() => {
     </div>
     <UForm
       @submit.prevent="() => (isSignUp ? signUp() : login())"
-      class="flex flex-col gap-2 mt-16"
+      
     >
       <UFormGroup label="Email" name="email" size="xl">
       <UInput v-model="email" placeholder="you@example.com" icon="i-heroicons-envelope"/>
