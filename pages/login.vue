@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { ref, onMounted, watchEffect } from 'vue';
+
+
+
 definePageMeta({
   middleware: ['auth'],
 });
+
 const email = ref('');
 const password = ref('');
 const isSignUp = ref(false);
-const errorMsg = ref(null);
+const errorMsg = ref<string | null>(null);
 const client = useSupabaseClient();
+const user = useSupabaseUser();
+const router = useRouter();
 
 const signUp = async () => {
   try {
@@ -15,13 +22,11 @@ const signUp = async () => {
       password: password.value,
     });
     if (error) throw error;
-  } catch (error) {
+  } catch (error: any) {
     errorMsg.value = error.message;
     setTimeout(() => {
       errorMsg.value = null;
     }, 3000);
-    console.log('user', user);
-    console.log('error', error);
   }
 };
 
@@ -32,21 +37,18 @@ const login = async () => {
       password: password.value,
     });
     if (error) throw error;
-  } catch (error) {
+  } catch (error: any) {
     errorMsg.value = `Error: ${error.message}`;
     setTimeout(() => {
       errorMsg.value = null;
     }, 3000);
-    console.log('user', user);
-    console.log('error', error);
   }
 };
 
-const user = useSupabaseUser();
 onMounted(() => {
   watchEffect(() => {
     if (user.value) {
-      navigateTo('/dashboard');
+      router.push('/dashboard');
     }
   });
 });
@@ -59,32 +61,23 @@ onMounted(() => {
       <p class="text-red-500">{{ errorMsg }}</p>
     </div>
 
-    <UForm
-      @submit.prevent="() => (isSignUp ? signUp() : login())"
-      
-    >
+    <UForm @submit.prevent="isSignUp ? signUp() : login()">
       <UFormGroup label="Email" name="email" size="xl">
-      <UInput v-model="email" placeholder="you@example.com" icon="i-heroicons-envelope"/>
-    </UFormGroup>
+        <UInput v-model="email" placeholder="you@example.com" icon="i-heroicons-envelope" required/>
+      </UFormGroup>
      
       <UFormGroup label="Password" name="password" size="xl">
-      <UInput v-model="password" type="password" placeholder="Password" />
-    </UFormGroup>
-      <UButton block size="xl>
-        type="submit"
-      >
-        <span v-if="isSignUp"> Sign up </span>
-        <span v-else> Log in </span>
+        <UInput v-model="password" type="password" placeholder="Password" required/>
+      </UFormGroup>
+      <UButton block size="xl" type="submit" class="my-3">
+        <span v-if="isSignUp">Sign up</span>
+        <span v-else>Log in</span>
       </UButton>
     </UForm>
-    <UButton
-      @click="isSignUp = !isSignUp"
-      size="xl 
-      block
-    >
-      <span v-if="isSignUp"> Have an account? Log in instead </span>
-      <span v-else> Create a new account </span>
+
+    <UButton @click="isSignUp = !isSignUp" size="xl" block class="my-3">
+      <span v-if="isSignUp">Have an account? Log in instead</span>
+      <span v-else>Create a new account</span>
     </UButton>
-    
   </div>
 </template>
