@@ -1,11 +1,6 @@
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
-  modules: [
-    '@nuxtjs/google-fonts',
-    '@nuxtjs/supabase',
-    "@nuxt/ui",
-    "@nuxt/icon"
-  ],
+  modules: ['@nuxtjs/google-fonts', "@nuxt/ui", "@nuxt/icon", "@nuxtjs/supabase"],
 
   postcss: {
     plugins: {
