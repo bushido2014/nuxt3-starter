@@ -2,7 +2,7 @@
   <u-card class="w-full max-w-lg">
 
     <template #header>
-      Login
+      Create account
     </template>
 
     <u-form :state="state" @submit="submit" class="space-y-6">
@@ -14,10 +14,7 @@
         <u-input v-model="state.password" type="password" placeholder="Password" />
       </u-form-group>
 
-      <UButtonGroup size="sm" orientation="horizontal" class="flex justify-between">
-        <u-button type="submit" class="space-y-6">Login</u-button>
-        <NuxtLink to="/register">Create an account</NuxtLink>
-      </UButtonGroup>
+      <u-button type="submit">Create account</u-button>
     </u-form>
 
   </u-card>
@@ -38,12 +35,12 @@ async function submit(event: FormSubmitEvent<any>) {
 
   const { email, password } = event.data;
 
-  await supabase.auth.signInWithPassword({
+  await supabase.auth.signUp({
     email,
     password,
   });
 
-  navigateTo('/');
+  navigateTo('/login');
 
 }
 
