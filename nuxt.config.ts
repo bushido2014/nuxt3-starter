@@ -1,19 +1,20 @@
+import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
-  css: ["~/assets/css/main.css"],
-  modules: [
+   modules: [
     "@nuxtjs/google-fonts",
     "@nuxt/ui",
     "@nuxt/icon",
     "@nuxtjs/supabase",
   ],
-
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
+  
+  css: ["~/assets/css/main.css"],
+ vite: {
+    plugins: [
+      tailwindcss(),
+    ],
   },
-
+ 
+   
   googleFonts: {
     prefetch: true,
     preconnect: true,
